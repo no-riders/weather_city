@@ -1,14 +1,14 @@
 var btn = document.getElementById('btn');
-var search = document.getElementById('search')
-var tempMin = document.getElementById('temp_min');
-var tempMax = document.getElementById('temp_max');
+// var search = document.getElementById('search')
+// var tempMin = document.getElementById('temp_min');
+// var tempMax = document.getElementById('temp_max');
 var forecast = document.getElementById('forecast');
 var welcome = document.getElementById('welcome');
 var foreIcon = document.getElementById('fore_icon');
 var farenheit = document.getElementById('far');
 var celsius = document.getElementById('cel');
 var weatherIcon = document.getElementById('icon');
-var cf = document.getElementsByClassName('cf')[0];
+//var cf = document.getElementsByClassName('cf')[0];
 
 
 //geolocation detected onload
@@ -17,8 +17,9 @@ window.addEventListener('load', function() {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         geolocation(lat, lon); //pass to f() that finds city by given lat and lon
-        search.style.display = "block";
-        cf.style.display = "block";
+        document.getElementById('search').style.display = "block";
+        document.getElementsByClassName('cf')[0].style.display = "block";
+        document.getElementsByClassName('permition')[0].style.display = "none";
     });
 })
 
@@ -84,9 +85,9 @@ function getWeather(city) {
         foreIcon.style.display = 'none';
         icon.innerHTML = '<i class="wi wi-owm-' + myData.weather[0].id + '"></i>';
         welcome.innerHTML = 'Hey! How Is It In ' + city + ', ' + country + '?';
-        temp.innerHTML = 'Current ' + '<span>' + currTemp + '</span>' + '&degC';
-        temp_min.innerHTML = 'Low ' + '<span>' + minTemp + '</span>' + '&degC';
-        temp_max.innerHTML = 'High ' + '<span>' + maxTemp + '</span>' + '&degC';
+        temp.innerHTML = 'Current ' + '<span>' + '</br>' + currTemp + '</span>' + '&degC';
+        temp_min.innerHTML = 'Low ' + '<span>' + '</br>' + minTemp + '</span>' + '&degC';
+        temp_max.innerHTML = 'High ' + '<span>' + '</br>' + maxTemp + '</span>' + '&degC';
 
         if (myData.weather[0].main === 'Clear') {
             forecast.innerHTML = 'Conditions Are Clear';
@@ -101,11 +102,11 @@ function getWeather(city) {
                 var currTempF = Math.round((currTemp * 1.8) + 32);
                 var minTempF = Math.round((minTemp * 1.8) + 32);
                 var maxTempF = Math.round((maxTemp * 1.8) + 32);
-                temp.innerHTML = 'Current Tempereature is ' + '<span>' + currTempF + '</span>' + '&degF';
-                temp_min.innerHTML = 'Could Get As Low As ' + '<span>' + minTempF + '</span>' + '&degF';
-                temp_max.innerHTML = 'And As High As ' + '<span>' + maxTempF + '</span>' + '&degF';
+                temp.innerHTML = 'Current ' + '<span>' + '</br>' + currTempF + '</span>' + '&degF';
+                temp_min.innerHTML = 'Low ' + '<span>' + '</br>' + minTempF + '</span>' + '&degF';
+                temp_max.innerHTML = 'Low ' + '<span>' + '</br>' + maxTempF + '</span>' + '&degF';
             })
-        //back to C:
+            //back to C:
         cel.addEventListener('click', celsius);
     }
     myRequest.send();
