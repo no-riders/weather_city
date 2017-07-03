@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+/*font-family: 'Poiret One', cursive;*/
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:500');
+/*font-family: 'Ubuntu', sans-serif;*/
+@import url('https://fonts.googleapis.com/css?family=Bubbler+One');
+/*font-family: 'Bubbler One', sans-serif;*/
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro:500');
+/*font-family: 'Advent Pro', sans-serif;*/
+@import url(font/weathericons-regular-webfont.woff);
+@import url(font/weathericons-regular-webfont.woff2);
+
+html {
+	background: aliceblue;
+	position: relative;
+	height: 100%;
+    
+}
+body {
+	width: 60%;
+	min-height: 220px;
+	position: absolute;
+	border-radius: 55px;
+	top: 50%;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+	transform: translateY(-50%);
+	background: url('');
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.2), 0px 0px 4px 0px rgba(0, 0, 0, 0.19);
+}
+
+header {
+	text-align: center;
+	background: rgba(222,184,135,0.6);
+	border-top-left-radius: 55px;
+	border-top-right-radius: 55px;
+}
+
+header h1 {
+	font-family: 'Ubuntu', sans-serif;
+	letter-spacing: 1px;
+	margin-top: 0;
+	padding-top: 20px;
+
+
+}
+
+header p {
+	font-family: 'Bubbler One', sans-serif;
+	font-size: 45px;
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+
+header p i {
+	transform: scale(1.5);
+	margin-bottom: 30px;
+}
+
+.weather {
+	height: 15%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	background: rgba(95,158,160,0.8);
+
+}
+
+.weather span {
+	color: black;
+	box-sizing: border-box;
+	flex-basis: 30%;
+	text-align: center;
+	font-family: 'Advent Pro', sans-serif;
+	letter-spacing: 1.5px;
+	font-weight: 500;
+	font-size: 25px;
+}
+
+#temp>span, #temp_min>span, #temp_max>span {
+	color: aliceblue;
+	font-size: 30px;
+}
+
+.weather span:first-child {
+	position: relative;
+	z-index: 1;
+}
+
+.weather span:first-child:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: url(img/min_temp.svg) no-repeat center center/25% auto;
+	opacity: .4;
+}
+
+.weather span:nth-child(2) {
+	position: relative;
+	z-index: 1;
+}
+
+.weather span:nth-child(2):before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: url(img/current_temp.svg) no-repeat center center/25% auto;
+	opacity: .4;
+}
+
+.weather span:last-child {
+	position: relative;
+	z-index: 1;
+}
+
+.weather span:last-child:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: .4;
+	background: url(img/max_temp.svg) no-repeat center center/25% auto;
+}
+
+.cf {
+	display: none;
+	text-align: center;
+	margin: 20px 0;
+	background: aliceblue;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.cf img {
+	padding: 5px 0;
+	width: 35px;
+}
+
+.cf img:first-child {
+	margin-right: 8px;
+}
+
+.cf img:hover {
+	background: burlywood;
+}
+
+
+/*search field*/
+.search {
+	display: none;
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+	margin: 0 auto;
+	margin-top: 50px;
+	opacity: 0.8;
+}
+
+.search input#city {
+  width: 200px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  padding-left: 10px;
+  color: #262626;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: 'Bubbler One', sans-serif;
+   letter-spacing: 2.5px;
+   font-size: 18px;
+   font-weight: bold;
+  transition: width .55s ease;
+}
+
+.search input#city::-webkit-input-placeholder {
+   color: #65737e;
+   font-family: 'Bubbler One', sans-serif;
+   letter-spacing: 1px;
+   font-size: 14px;
+   font-weight: bold;
+}
+ 
+.search input#city:-ms-input-placeholder {  
+   color: #65737e; 
+   font-family: 'Bubbler One', sans-serif;
+   letter-spacing: 1px;
+   font-size: 14px;
+   font-weight: bold;
+}
+
+.icon {
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 20px;
+}
+
+.search input#city:focus, .search input#city:active{
+  outline:none;
+  width: 300px;
+}
+ 
+.search:hover input#city{
+width: 300px;
+}
+ 
+.search:hover .icon{
+  color: #93a2ad;
+}
+
+.myButton {
+	background-color: #599bb3;
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: 2px;
+	display:inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 20px;
+	font-family: 'Bubbler One', sans-serif;
+	letter-spacing: 1.5px;
+	padding: 13px 32px;
+	text-decoration: none;
+}
+
+.myButton:hover {
+	background-color:#408c99;
+}
+
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+
+footer {
+	text-align: center;
+	margin-bottom: 5px;
+	font-family: 'Bubbler One', sans-serif;
+	font-weight: bold;
+}
