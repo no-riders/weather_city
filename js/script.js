@@ -92,7 +92,7 @@ function getWeather(city) {
         } else if (myData.weather[0].main === 'Clouds') {
             forecast.innerHTML = 'Looking At Some Clouds Up There';
         } else if (myData.weather[0].main === 'Rain') {
-            forecast.innerHTML = 'Consider Taking an Umbrella';
+            forecast.innerHTML = 'Consider Taking An Umbrella';
         }
 
         //to farenheit:
