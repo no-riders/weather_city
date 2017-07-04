@@ -1,17 +1,13 @@
 var btn = document.getElementById('btn');
-// var search = document.getElementById('search')
-// var tempMin = document.getElementById('temp_min');
-// var tempMax = document.getElementById('temp_max');
 var forecast = document.getElementById('forecast');
 var welcome = document.getElementById('welcome');
 var foreIcon = document.getElementById('fore_icon');
 var farenheit = document.getElementById('far');
 var celsius = document.getElementById('cel');
 var weatherIcon = document.getElementById('icon');
-//var cf = document.getElementsByClassName('cf')[0];
 
 
-//geolocation detected onload
+//geolocation detected onload + hide/show
 window.addEventListener('load', function() {
     navigator.geolocation.getCurrentPosition(function(position) {
         var lat = position.coords.latitude;
@@ -31,6 +27,7 @@ document.getElementById("city").addEventListener("keypress", function(event) {
     }
 });
 
+//lat lon --> city name
 function geolocation(lat, lon) {
     var requestCurrent = new XMLHttpRequest();
     requestCurrent.open('GET', 'http://api.geonames.org/findNearbyPlaceNameJSON?lat=' + lat + '&lng=' + lon + '&username=effgen');
@@ -42,6 +39,7 @@ function geolocation(lat, lon) {
     requestCurrent.send();
 }
 
+//fetch photo w/ cityname tag
 function photo(city) {
     var photoRequest = new XMLHttpRequest();
     photoRequest.open('GET', 'https://pixabay.com/api/?key=5792557-d11e60511dda64c6a5d3e5ae9&q=' + city + '&image_type=photo');
@@ -55,7 +53,7 @@ function photo(city) {
     photoRequest.send();
 }
 
-//search res
+//city search by name, button eventlistener
 btn.addEventListener('click', function() {
     var city = document.getElementById('city').value;
     var photoRequestOnClick = new XMLHttpRequest();
@@ -70,7 +68,7 @@ btn.addEventListener('click', function() {
     photoRequestOnClick.send();
 })
 
-//main f() that displays weather
+//main f() that renders weather
 function getWeather(city) {
     city = city.charAt(0).toUpperCase() + city.slice(1);
     var myRequest = new XMLHttpRequest();

@@ -19,9 +19,9 @@ html {
 }
 body {
 	width: 60%;
-	min-height: 220px;
+	min-height: 200px;
 	position: absolute;
-	border-radius: 55px;
+	border-radius: 25px;
 	top: 50%;
 	right: 0;
 	left: 0;
@@ -37,8 +37,8 @@ body {
 header {
 	text-align: center;
 	background: rgba(222,184,135,0.6);
-	border-top-left-radius: 55px;
-	border-top-right-radius: 55px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
 }
 
 header h5 {
@@ -78,7 +78,7 @@ header p i {
 	background: rgba(95,158,160,0.8);
 }
 
-.weather span {
+.weather p {
 	color: black;
 	box-sizing: border-box;
 	flex-basis: 30%;
@@ -92,57 +92,6 @@ header p i {
 #temp>span, #temp_min>span, #temp_max>span {
 	color: aliceblue;
 	font-size: 30px;
-}
-
-.weather span:first-child {
-	position: relative;
-	z-index: 1;
-}
-
-.weather span:first-child:before {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: url(img/min_temp.svg) no-repeat center center/25% auto;
-	opacity: .4;
-}
-
-.weather span:nth-child(2) {
-	position: relative;
-	z-index: 1;
-}
-
-.weather span:nth-child(2):before {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: url(img/current_temp.svg) no-repeat center center/25% auto;
-	opacity: .4;
-}
-
-.weather span:last-child {
-	position: relative;
-	z-index: 1;
-}
-
-.weather span:last-child:before {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	opacity: .4;
-	background: url(img/max_temp.svg) no-repeat center center/25% auto;
 }
 
 .cf {
@@ -216,13 +165,6 @@ header p i {
    font-weight: bold;
 }
 
-.icon {
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 20px;
-}
-
 .search input#city:focus, .search input#city:active{
   outline:none;
   width: 300px;
@@ -236,13 +178,13 @@ width: 300px;
   color: #93a2ad;
 }
 
-.myButton {
+.search button {
 	background-color: #599bb3;
 	border-radius: 5px;
 	padding-left: 15px;
 	padding-right: 15px;
 	margin-left: 2px;
-	display:inline-block;
+	display: inline-block;
 	cursor: pointer;
 	color: #ffffff;
 	font-size: 20px;
@@ -252,11 +194,11 @@ width: 300px;
 	text-decoration: none;
 }
 
-.myButton:hover {
-	background-color:#408c99;
+.search button:hover {
+	background-color: #408c99;
 }
 
-.myButton:active {
+.search button:active {
 	position: relative;
 	top: 1px;
 }

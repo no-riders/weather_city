@@ -5,8 +5,6 @@
 		<title>Document</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/weather-icons.min.css">
-		<link rel="stylesheet" href="font/weathericons-regular-webfont.woff" type=text/css>
-		<link rel="stylesheet" href="font/weathericons-regular-webfont.woff2" type=text/css>
 		<script src="https://use.fontawesome.com/099a74c435.js"></script>
 	</head>
 	<body id="body">
@@ -18,13 +16,13 @@
 			<img src="img/Interwind.svg" alt="conditions" id="fore_icon" width="100px"></img>
 		</header>
 		<section class="weather">
-			<span><p id="temp_min"></p></span>
-			<span><p id="temp"></p></span>
-			<span><p id="temp_max"></p></span>
+			<p id="temp_min"></p>
+			<p id="temp"></p>
+			<p id="temp_max"></p>
 		</section>
 		<div id="search" class="search">
 			<input type="text" id="city" value="" placeholder="Curious about somewhere else?">
-			<button id="btn" class="myButton">Let's See</button>
+			<button id="btn">Let's See</button>
 		</div>
 		<div class="cf">
 			<img src="img/celsius.svg" id="cel" alt="C"><img src="img/farenheit.svg" id="far" alt="F">
