@@ -34,21 +34,22 @@ body {
     box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.2), 0px 0px 4px 0px rgba(0, 0, 0, 0.19);
 }
 
+span#typo {
+	display: none;
+	margin-top: 60px;
+	padding: 5px;
+	text-align: center;
+    font-size: 30px;
+    font-family: 'Advent Pro', sans-serif;
+    background: aliceblue;
+}
+
 header {
+	display: block;
 	text-align: center;
 	background: rgba(222,184,135,0.6);
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
-}
-
-header h5 {
-	display: block;
-	margin: 0;
-	position: relative;
-    bottom: 60px;
-    font-family: 'Advent Pro', sans-serif;
-    font-size: 25px;
-    letter-spacing: 1.5px;
 }
 
 header h1 {
@@ -120,62 +121,62 @@ header p i {
 /*search field*/
 .search {
 	display: none;
-  width: 300px;
-  vertical-align: middle;
-  white-space: nowrap;
-  position: relative;
+  	width: 300px;
+  	vertical-align: middle;
+  	white-space: nowrap;
+  	position: relative;
 	margin: 0 auto;
 	margin-top: 50px;
 	opacity: 0.8;
 }
 
 .search input#city {
-  width: 200px;
-  height: 50px;
-  background: #2b303b;
-  border: none;
-  font-size: 10pt;
-  float: left;
-  padding-left: 10px;
-  color: #262626;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  color: #fff;
-  font-family: 'Bubbler One', sans-serif;
-   letter-spacing: 2.5px;
-   font-size: 18px;
-   font-weight: bold;
-  transition: width .55s ease;
+  	width: 200px;
+	height: 50px;
+	background: #2b303b;
+	border: none;
+	font-size: 10pt;
+	float: left;
+	padding-left: 10px;
+	color: #262626;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #fff;
+	font-family: 'Bubbler One', sans-serif;
+	letter-spacing: 2.5px;
+	font-size: 18px;
+	font-weight: bold;
+	transition: width .55s ease;
 }
 
 .search input#city::-webkit-input-placeholder {
-   color: #65737e;
-   font-family: 'Bubbler One', sans-serif;
-   letter-spacing: 1px;
-   font-size: 14px;
-   font-weight: bold;
+   	color: #65737e;
+   	font-family: 'Bubbler One', sans-serif;
+   	letter-spacing: 1px;
+   	font-size: 14px;
+   	font-weight: bold;
 }
  
 .search input#city:-ms-input-placeholder {  
-   color: #65737e; 
-   font-family: 'Bubbler One', sans-serif;
-   letter-spacing: 1px;
-   font-size: 14px;
-   font-weight: bold;
+   	color: #65737e; 
+   	font-family: 'Bubbler One', sans-serif;
+   	letter-spacing: 1px;
+   	font-size: 14px;
+   	font-weight: bold;
 }
 
 .search input#city:focus, .search input#city:active{
-  outline:none;
-  width: 300px;
+  	outline:none;
+  	width: 300px;
 }
  
 .search:hover input#city{
-width: 300px;
+	width: 300px;
 }
  
 .search:hover .icon{
-  color: #93a2ad;
+  	color: #93a2ad;
 }
 
 .search button {

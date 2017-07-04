@@ -5,18 +5,23 @@ var foreIcon = document.getElementById('fore_icon');
 var farenheit = document.getElementById('far');
 var celsius = document.getElementById('cel');
 var weatherIcon = document.getElementById('icon');
+var weather = document.getElementById('weather');
+var head = document.getElementById('head');
+var typo = document.getElementById('typo');
 
 
 //geolocation detected onload + hide/show
 window.addEventListener('load', function() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        geolocation(lat, lon); //pass to f() that finds city by given lat and lon
-        document.getElementById('search').style.display = "block";
-        document.getElementsByClassName('cf')[0].style.display = "block";
-        document.getElementsByClassName('permition')[0].style.display = "none";
-    });
+    var locate = new XMLHttpRequest();
+    locate.open('GET', 'https://freegeoip.net/json/');
+    locate.onload = function() {
+        var data = JSON.parse(locate.responseText);
+        var currentCity = data.city;
+        photo(currentCity);
+    }
+    document.getElementById('search').style.display = "block";
+    document.getElementsByClassName('cf')[0].style.display = "block";
+    locate.send();
 })
 
 // stop Enter from refreshing page
@@ -27,25 +32,19 @@ document.getElementById("city").addEventListener("keypress", function(event) {
     }
 });
 
-//lat lon --> city name
-function geolocation(lat, lon) {
-    var requestCurrent = new XMLHttpRequest();
-    requestCurrent.open('GET', 'https://crossorigin.me/http://api.geonames.org/findNearbyPlaceNameJSON?lat=' + lat + '&lng=' + lon + '&username=effgen');
-    requestCurrent.onload = function() {
-        var geoData = JSON.parse(requestCurrent.responseText);
-        var currentCity = geoData.geonames[0].name;
-        photo(currentCity);
-    }
-    requestCurrent.send();
-}
-
 //fetch photo w/ cityname tag
 function photo(city) {
     var photoRequest = new XMLHttpRequest();
     photoRequest.open('GET', 'https://pixabay.com/api/?key=5792557-d11e60511dda64c6a5d3e5ae9&q=' + city + '&image_type=photo');
     photoRequest.onload = function() {
         var photoData = JSON.parse(photoRequest.responseText);
-        var random = Math.round((Math.random() * 5) + 1);
+
+        //if pixabay has only few pics of current city
+        if (photoData.totalHits < 3) {
+            random = Math.round((Math.random() * 2) + 1);
+        }
+
+        var random = Math.round((Math.random() * 19) + 1);
         var photoUrl = photoData.hits[random].webformatURL;
         document.body.style.backgroundImage = 'url(' + photoUrl + ')';
         getWeather(city);
@@ -60,8 +59,21 @@ btn.addEventListener('click', function() {
     photoRequestOnClick.open('GET', 'https://pixabay.com/api/?key=5792557-d11e60511dda64c6a5d3e5ae9&q=' + city + '&image_type=photo');
     photoRequestOnClick.onload = function() {
         var photoDataClick = JSON.parse(photoRequestOnClick.responseText);
-        var randomClick = Math.round((Math.random() * 5) + 1);
+
+        //if pixabay has only few pics of current city
+        if (photoDataClick.totalHits === 0) {
+            weather.style.display = "none";
+            head.style.display = "none";
+            typo.style.display = "block";
+        } else if (photoDataClick.totalHits < 3) {
+            var randomClick = Math.round((Math.random() * 3) + 1);
+        }
+
+        var randomClick = Math.round((Math.random() * 19) + 1);
         var photoUrlClick = photoDataClick.hits[randomClick].webformatURL;
+        typo.style.display = "none";
+        head.style.display = "block";
+        weather.style.display = "flex";
         document.body.style.backgroundImage = 'url(' + photoUrlClick + ')';
         getWeather(city);
     }
@@ -72,15 +84,21 @@ btn.addEventListener('click', function() {
 function getWeather(city) {
     city = city.charAt(0).toUpperCase() + city.slice(1);
     var myRequest = new XMLHttpRequest();
-    myRequest.open('GET', 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=53f23142a8763c921f438a9baee0b016')
+    myRequest.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=53f23142a8763c921f438a9baee0b016')
     myRequest.onload = function celsius() {
         var myData = JSON.parse(myRequest.responseText);
         var country = myData.sys.country;
         var currTemp = Math.round(myData.main.temp);
         var minTemp = Math.round(myData.main.temp_min);
         var maxTemp = Math.round(myData.main.temp_max);
+        var random = '';
 
         foreIcon.style.display = 'none';
+
+        if (myData.cod == 404) {
+            welcome.innerHTML = 'Must be a Mistake in Spelling..'
+        }
+
         icon.innerHTML = '<i class="wi wi-owm-' + myData.weather[0].id + '"></i>';
         welcome.innerHTML = 'Hey! How Is It In ' + city + ', ' + country + '?';
         temp.innerHTML = 'Current ' + '<span>' + '</br>' + currTemp + '</span>' + '&degC';
@@ -95,7 +113,7 @@ function getWeather(city) {
             forecast.innerHTML = 'Consider Taking an Umbrella';
         }
 
-        //to farenheit:
+        //to F:
         far.addEventListener('click', function() {
                 var currTempF = Math.round((currTemp * 1.8) + 32);
                 var minTempF = Math.round((minTemp * 1.8) + 32);
