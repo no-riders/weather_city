@@ -12,6 +12,7 @@ var typo = document.getElementById('typo');
 
 //geolocation detected onload + hide/show
 window.addEventListener('load', function() {
+    alert('Site is currently using HTTP weather API so please allow "Unsafe Connection"');
     var locate = new XMLHttpRequest();
     locate.open('GET', 'https://freegeoip.net/json/');
     locate.onload = function() {

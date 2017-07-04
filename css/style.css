@@ -6,8 +6,10 @@
 /*font-family: 'Bubbler One', sans-serif;*/
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro:500');
 /*font-family: 'Advent Pro', sans-serif;*/
-@import url(font/weathericons-regular-webfont.woff);
-@import url(font/weathericons-regular-webfont.woff2);
+@font-face {
+	font-family: bodytext;
+	src: url(font/weathericons-regular-webfont.woff) format("WOFF");
+}
 
 
 
