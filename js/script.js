@@ -12,7 +12,6 @@ var typo = document.getElementById('typo');
 
 //geolocation detected onload + hide/show
 window.addEventListener('load', function() {
-    alert('Site is currently using HTTP weather API so please allow "Unsafe Connection"');
     var locate = new XMLHttpRequest();
     locate.open('GET', 'https://freegeoip.net/json/');
     locate.onload = function() {
@@ -85,7 +84,7 @@ btn.addEventListener('click', function() {
 function getWeather(city) {
     city = city.charAt(0).toUpperCase() + city.slice(1);
     var myRequest = new XMLHttpRequest();
-    myRequest.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=53f23142a8763c921f438a9baee0b016')
+    myRequest.open('GET', 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=53f23142a8763c921f438a9baee0b016')
     myRequest.onload = function celsius() {
         var myData = JSON.parse(myRequest.responseText);
         var country = myData.sys.country;
