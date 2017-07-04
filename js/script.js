@@ -30,7 +30,7 @@ document.getElementById("city").addEventListener("keypress", function(event) {
 //lat lon --> city name
 function geolocation(lat, lon) {
     var requestCurrent = new XMLHttpRequest();
-    requestCurrent.open('GET', 'https://api.geonames.org/findNearbyPlaceNameJSON?lat=' + lat + '&lng=' + lon + '&username=effgen');
+    requestCurrent.open('GET', 'https://crossorigin.me/http://api.geonames.org/findNearbyPlaceNameJSON?lat=' + lat + '&lng=' + lon + '&username=effgen');
     requestCurrent.onload = function() {
         var geoData = JSON.parse(requestCurrent.responseText);
         var currentCity = geoData.geonames[0].name;
@@ -72,7 +72,7 @@ btn.addEventListener('click', function() {
 function getWeather(city) {
     city = city.charAt(0).toUpperCase() + city.slice(1);
     var myRequest = new XMLHttpRequest();
-    myRequest.open('GET', 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=53f23142a8763c921f438a9baee0b016')
+    myRequest.open('GET', 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=53f23142a8763c921f438a9baee0b016')
     myRequest.onload = function celsius() {
         var myData = JSON.parse(myRequest.responseText);
         var country = myData.sys.country;
@@ -92,7 +92,7 @@ function getWeather(city) {
         } else if (myData.weather[0].main === 'Clouds') {
             forecast.innerHTML = 'Looking At Some Clouds Up There';
         } else if (myData.weather[0].main === 'Rain') {
-            forecast.innerHTML = 'Consider Taking An Umbrella';
+            forecast.innerHTML = 'Consider Taking an Umbrella';
         }
 
         //to farenheit:
