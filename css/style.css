@@ -149,7 +149,7 @@ header p i {
 	letter-spacing: 2.5px;
 	font-size: 18px;
 	font-weight: bold;
-	transition: width .55s ease;
+	transition: width 1s ease;
 }
 
 .search input#city::-webkit-input-placeholder {
