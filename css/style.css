@@ -133,7 +133,7 @@ header p i {
 }
 
 .search input#city {
-  	width: 200px;
+  	width: 160px;
 	height: 50px;
 	background: #2b303b;
 	border: none;
@@ -168,13 +168,13 @@ header p i {
    	font-weight: bold;
 }
 
-.search input#city:focus, .search input#city:active{
+.search input#city:focus, .search input#city:active {
   	outline:none;
-  	width: 300px;
+  	width: 200px;
 }
  
 .search:hover input#city{
-	width: 300px;
+	width: 200px;
 }
  
 .search:hover .icon{
